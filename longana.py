@@ -74,7 +74,7 @@ class Player:
 		print("Player Type    " + self.type)
 		print("Player Score:  " + str(self.score))
 		print("Player Hand:   " + str(self.hand.getHand()))
-		print("Player Layout: " + str(self.layout.getLayout()))
+		print("Player Layout: ", str(self.layout.getLayout()), "P"+str(self.id))
 
 #---------------------------------------------------------------------------------------------------------------------
 
@@ -104,13 +104,15 @@ class Round:
 	def printRoundDetails(self):
 		for player in self.players:
 			player.printPlayerDetails()
+			print("Passed:", self.passed[player.id])
+			print('\n')
 
 	def findAndPlaceEngine(self):
 		engine = self.dominoType - self.roundNumber
 		engineFound = False
 		playerWithEngine = -1
-		print(engine)
-		print(self.stock.getStock())
+		print("Engine:", engine, engine)
+		print("Stock: ", self.stock.getStock())
 		while (not engineFound):
 			for player in self.players:
 				if player.hand.hasEngine(engine):
@@ -136,15 +138,15 @@ class Round:
 	def beginRound(self):
 		
 		while True:
+
+			# Print board after player's move
+			self.printRoundDetails()
 			
 			# Play Turn based on type of player
 			if self.players[self.turn].type == "Computer":
 				self.playComputerTurn()
 			else:
-				self.playHumanTurn()
-			
-			# Print board after player's move
-			self.printRoundDetails()
+				self.playHumanTurn()	
 
 			#check if round has ended
 			returnCode = self.checkRoundEnd()
@@ -154,8 +156,6 @@ class Round:
 				for player in self.players:
 					scores.append(player.score)
 				return scores
-
-			print("----------------------------------------------------------------------------------\n ")
 
 	def findPossibleMoves(self, turn):
 		hand = turn.hand.getHand()
@@ -194,6 +194,7 @@ class Round:
 		possibleMoves = self.findPossibleMoves(currentPlayer)
 		bestMove = self.findBestMove(possibleMoves)
 		
+		print("----------------------------------------------------------------------------------\n ")
 		print("Turn ID:", currentPlayer.id)
 		print("Possible Moves:", possibleMoves)
 		print("Best Move:", bestMove)
@@ -211,7 +212,7 @@ class Round:
 			else:
 				self.players[id].layout.addDomino((pip2, pip1))
 
-			print("Player", self.turn, "placed", pip1, pip2, "on side", id)
+			print("Player", self.turn, "placed", pip1, pip2, "on side", ("P"+str(id)), "beacause this moves yields the highest sum out of all possible moves.")
 			# Delete tile from hand
 			currentPlayer.hand.deleteDomino((pip1, pip2))
 
@@ -226,12 +227,16 @@ class Round:
 			turn = self.turn+1
 			self.turn = turn if turn < self.numberOfPlayers else 0
 
+			currentPlayer.drawn = False
+
 		# Pass or draw a tile
 		else:
 			
 			#try to draw a tile
 			self.drawOrPass(currentPlayer)
 	
+		print("----------------------------------------------------------------------------------\n ")
+
 	def drawOrPass(self, player):
 		if player.drawn:
 			
@@ -267,6 +272,7 @@ class Round:
 
 				# Reset the drawn
 				player.drawn = False
+		print("")
 
 	def playHumanTurn(self):
 
@@ -275,13 +281,10 @@ class Round:
 		possibleMoves = self.findPossibleMoves(currentPlayer)
 		bestMove = self.findBestMove(possibleMoves)
 		
-		# Print Player details
-		print("Turn ID:", currentPlayer.id)
-		print("Possible Moves:", possibleMoves)
-		print("Best Move:", bestMove)
-		print("Stock:", self.stock.getStock() , "\n")
+		print("----------------------------------------------------------------------------------\n ")
 
 		# Get user input
+		print("Player", self.turn)
 		userInput = input("Enter your move: ").upper()
 
 		# validate the input
@@ -398,6 +401,8 @@ class Round:
 		else:
 			print("Your input is Invalid. Please verify that your input is either MOVE, DRAW, PASS, HELP or SAVE")
 
+		print("----------------------------------------------------------------------------------\n ")
+
 	def checkRoundEnd(self):
 
 		returnCode = 0
@@ -440,7 +445,7 @@ class Round:
 			else:
 				print("Two or more players have fewest points. The round is a draw.")
 
-			self.printRoundDetails()
+		print("\n\n")
 #---------------------------------------------------------------------------------------------------------------------
 
 def main():
@@ -452,7 +457,7 @@ def main():
 	tournamentScore = -1
 	roundNumber = 0
 	humanPlayer = 0
-	computerPlayer = 0
+	computerPlayer = 4
 
 	# Ask if user wants to load a file
 	while True:
@@ -511,14 +516,9 @@ def main():
 		
 		# Print who placed the round
 		print("Player", round.findAndPlaceEngine(), "placed the engine.")
-		
-		# Print the round detauls
-		round.printRoundDetails()
 
 		# Start the round
 		scores = round.beginRound()
-
-		print(scores)
 
 		round.printRoundDetails()
 
