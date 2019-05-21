@@ -1,23 +1,18 @@
-Longana
-Rule rendition by Megan Cytro as explained to her by Louis Perez,
-as played in Tampa, Florida and as seen in the film, The Buena Vista Social Club.
-
-Last revised 1/21/00
+# Longana
 
 2-4 players
-~30 minutes
 
-Introduction and Comments
+## Introduction and Comments
 Over the holidays, I just learned a domino game called Longana. It was taught to me by my husband's grandfather, Louis Perez, who plays dominoes (double nines) every week at the Centro Asturiano in Tampa (with mostly viejos - older Cuban and Spanish guys). We were watching the Buena Vista Social Club film with him and, in one scene, when the musicians are taking a break, they play a game that looked different from double nines or double six. We asked him about the game and he taught us Longana. So it probably originated in Cuba or Spain.
 
 It's a good game for four people (the maximum number of players) and goes quickly once you get the hang of it.
 
 Full disclosure: apparently, the word longana has a second, less innocent, connotation in some Latin American countries...
 
-Components
+## Components
 Longana is played with a double 9 tile set. You'll also need a paper & pencil to keep score.
 
-Game Play
+## Game Play
 The players take 8 bones each. No additional bones are drawn.
 
 In the first game, the highest double is played. In subsequent games, the previous games's winner can play any double. If he does not have a double, the next person (counterclockwise) plays his/her double.
@@ -36,7 +31,8 @@ The first double can be played on 2-4 sides, depending on the number of players.
 
 The round is played until someone plays all of their dominoes. This person gets the points from the remaining players. The game can end at 50 or 100 points.
 
-Strategy
+## Strategy
 The prevailing strategy of the game is to line up the best string of dominoes for your zone up front (without alerting the other players to how good or bad your hand is). Then, in order to get rid of the remaining dominoes, you wait to play doubles in other players' zones or for other players to pass so that you can play in their zones. Once everyone gets good at the game, the real fun begins, when you start keeping track of what is being played and passed on and you find ways to block other players from playing their dominoes.
 
-The Game Cabinet - editor@gamecabinet.com - Ken Tidwell
+### The Game Cabinet - editor@gamecabinet.com - Ken Tidwell
+Rule rendition by Megan Cytro as explained to her by Louis Perez, as played in Tampa, Florida and as seen in the film, The Buena Vista Social Club.
